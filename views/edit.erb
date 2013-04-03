@@ -8,7 +8,7 @@
 		<input type="checkbox" name="complete" <%= "checked" if @note.complete %>>
 		<input type="submit">
 	</form>
-	<p><a href="/<%= @note.id %>/delete">Delete</a></p>
+	<p><a href="/<%= @note.id %>/delete"><input type="button" value="Delete"></a></p>
 <% else %>
 	<p>Not found.</p>
 <% end %>

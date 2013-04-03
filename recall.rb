@@ -6,7 +6,7 @@ DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
 
 # This class sets up a DB schema
 class Note   # Creates a 'Notes' table; Convention is to pluralize it (rails/ORM)
-  include DataMapper::Resource
+  include DataMapper::Resource   # This adds all the DM functionality to Note objects
   # Properties are table fields; name, data type, args
   property :id, Serial   # Serial is an int primary key, auto updated
   property :content, Text, required: true
@@ -44,6 +44,26 @@ put '/:id' do
   n = Note.get params[:id].to_i
   n.content = params[:content]
   n.complete = params[:complete] ? 1 : 0
+  n.updated_at = Time.now
+  n.save
+  redirect '/'
+end
+
+delete '/:id' do
+  n = Note.get params[:id].to_i
+  n.destroy   # DataMapper at work
+  redirect '/'
+end
+
+get '/:id/delete' do
+  @note = Note.get params[:id].to_i
+  @title = "Confirm deletion of note ##{params[:id]}"
+  erb :delete
+end
+
+get '/:id/complete' do
+  n = Note.get params[:id].to_i
+  n.complete = n.complete ? 0 : 1
   n.updated_at = Time.now
   n.save
   redirect '/'
