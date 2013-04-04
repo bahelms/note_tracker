@@ -2,7 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 
 # Creates a sqlite db at this path
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
+DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/recall.db")
 
 # This class sets up a DB schema
 class Note   # Creates a 'Notes' table; Convention is to pluralize it (rails/ORM)
