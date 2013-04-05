@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title><%= @title + ' | Note Tracker' %></title>
-	<link href="/reset.css" type="text/css" rel="stylesheet">
-	<link href="/style.css" type="text/css" rel="stylesheet">
+	<% if @css %>
+		<link href="/reset.css" type="text/css" rel="stylesheet">
+		<link href="/style.css" type="text/css" rel="stylesheet">
+	<% end %>
 </head>
 <body>
 
@@ -21,6 +23,11 @@
 
 	<footer>
 		<p><small>An app by jimbonk!</small></p>
+		<% if @css %>
+			<p><small><a href="/nocss">See it without CSS</a></small></p>
+		<% else %>
+			<p><small><a href="/">See it with CSS</a></small></p>
+		<% end %>
 	</footer>
 </body>
 </html>

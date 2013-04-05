@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= @title + ' | Note Tracker' %></title>
+</head>
+<body>
+
+	<header>
+		<hgroup>
+			<h1><a href="/">Note Tracker</a></h1>
+			<h2>'cause jimbonk told you so</h2>
+		</hgroup>
+	</header>
+
+	<div id="main">
+		<%= yield %>
+	</div>
+
+	<footer>
+		<small><p>An app by jimbonk!</p>
+			<p><a href="/">See it with CSS</a></p></small>
+	</footer>
+</body>
+</html>
