@@ -1,8 +1,8 @@
-I wrote this to practice writing web apps.
-
-It's a simple note taking app.
+FUN PRACTICE NOTE TAKING APP
 
 Tools used:
-*Sinatra
-*DataMapper
-*Sqlite3
+----
+* Sinatra
+* DataMapper
+* Sqlite3 - development
+* PostgreSQL - production
