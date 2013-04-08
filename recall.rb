@@ -26,7 +26,6 @@ end
 get '/' do
   @notes = Note.all :order => :id.desc   # DataMapper gets all Notes from db
   @title = 'All notes'
-  @css = true
   erb :home   # Runs layout.erb through the ERB parser and yields to home.erb
   # I guess this parses layout.erb automatically thru Sinatra magic
 end
@@ -38,13 +37,6 @@ post '/' do
   n.updated_at = Time.now
   n.save
   redirect '/'   # takes the browser back to this link; '/' being homepage
-end
-
-get '/nocss' do 
-  @notes = Note.all :order => :id.desc
-  @title = 'All notes'
-  @css = false
-  erb :home
 end
 
 get '/rss.xml' do   # RSS feed
