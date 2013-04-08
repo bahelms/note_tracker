@@ -8,7 +8,7 @@
 <% @notes.each do |note| %>
 	<article <%= 'class="complete"' if note.complete %>>
 		<p>
-			<%= h note.content %><!-- :h method to prevent XSS-->
+			<%= h note.content %>
 			<span><a href="/<%= note.id %>">[edit]</a></span>
 			<span class="links"><a href="/<%= note.id %>/complete">&#8623;</a></span>
 		</p>

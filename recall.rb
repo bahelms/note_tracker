@@ -1,6 +1,11 @@
 require 'sinatra'
 require 'data_mapper'
 
+enable :sessions
+
+SITE_TITLE = "Note Tracker"   # Sinatra global constants
+SITE_DESCRIPTION = "'cause jimbonk told you so"
+
 # Creates a environment dependent OR sqlite3 db at this path
 DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/recall.db")
 
@@ -27,7 +32,6 @@ get '/' do
   @notes = Note.all :order => :id.desc   # DataMapper gets all Notes from db
   @title = 'All notes'
   erb :home   # Runs layout.erb through the ERB parser and yields to home.erb
-  # I guess this parses layout.erb automatically thru Sinatra magic
 end
 
 post '/' do
