@@ -1,8 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
 
-enable :sessions
-
 SITE_TITLE = "Note Tracker"   # Sinatra global constants
 SITE_DESCRIPTION = "'cause jimbonk told you so"
 

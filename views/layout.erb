@@ -9,19 +9,32 @@
 </head>
 <body>
 
-	<header>
-		<hgroup>
-			<h1><a href="/"><%= SITE_TITLE %></a></h1>
-			<h2><%= SITE_DESCRIPTION %></h2>
-		</hgroup>
-	</header>
+	<nav>
+		<ul id="menu">
+			<li><a href="#">Home</a></li>
+			<li>Something</li>
+			<li>Something Else</li>
+		</ul>
+	</nav>
 
-	<div id="main">
-		<%= yield %>
+	<div id="container">
+		
+		<header>
+			<hgroup>
+				<h1><a href="/"><%= SITE_TITLE %></a></h1>
+				<h2><%= SITE_DESCRIPTION %></h2>
+			</hgroup>
+		</header>
+		
+		<div id="main">
+			<%= yield %>
+		</div>
+		
+		<footer>
+			<p><small>An app by jimbonk!</small></p>
+		</footer>
+
 	</div>
 
-	<footer>
-		<p><small>An app by jimbonk!</small></p>
-	</footer>
 </body>
 </html>

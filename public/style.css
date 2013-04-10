@@ -1,11 +1,38 @@
-body {  
-    margin: 35px auto;  
-    width: 640px;  
-}  
-  
+nav {
+    background-color: #2C5463;
+    height: 40px;
+    margin: auto;
+    margin-top: -25px;
+    padding-top: 30px;
+    border-radius: 20px;
+    width: 640px;
+}
+
+#menu {
+    text-align: center;
+}
+
+#menu li {
+    display: inline;
+    list-style-type: none;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    color: white;
+}
+
+#menu li a {
+    text-decoration: none;
+    color: white;
+}
+
+#container {
+    margin: 25px auto;
+    width: 640px;
+}
+
 header {  
     text-align: center;  
-    margin: 0 0 20px;  
+    margin: 20px 0 20px;  
 }  
   
 header h1 {  
@@ -23,7 +50,7 @@ header h2 {
     font-style: italic;  
     color: #999;  
 }  
-  
+
 #main {  
     margin: 0 0 20px;  
 }  
@@ -122,11 +149,3 @@ footer a {
     /*display: block;  */
     text-decoration: none;  
 }  
-
-.notice {
-    color: green;
-}
-
-.error {
-    color: red;
-}
