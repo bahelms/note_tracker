@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'data_mapper'
+require 'sinatra/flash'
+
+enable :sessions
+set :session_secret, 'eat a Banana skunk!'
 
 SITE_TITLE = "Note Tracker"   # Sinatra global constants
 SITE_DESCRIPTION = "'cause jimbonk told you so"
@@ -29,6 +33,9 @@ end
 get '/' do
   @notes = Note.all :order => :id.desc   # DataMapper gets all Notes from db
   @title = 'All notes'
+  if @notes.empty? 
+    flash.now[:error] = "No notes found. Add your first below."
+  end
   erb :home   # Runs layout.erb through the ERB parser and yields to home.erb
 end
 
@@ -37,8 +44,11 @@ post '/' do
   n.content = params[:content]   #params[:content] is set to textarea value (textarea name=content)
   n.created_at = Time.now
   n.updated_at = Time.now
-  n.save
-  redirect '/'   # takes the browser back to this link; '/' being homepage
+  if n.save 
+    redirect '/', notice: "Note created successfully."
+  else 
+    redirect '/', :error => "Failed to save note." 
+  end
 end
 
 get '/rss.xml' do   # RSS feed
@@ -49,7 +59,8 @@ end
 get '/:id' do   # URL parameter; sinatra puts this in params[]
   @note = Note.get params[:id].to_i   # .get method is DataMapper at work
   @title = "Edit note ##{params[:id]}"
-  erb :edit
+  if @note then erb :edit
+  else redirect '/', flash.now[:error] = "Can't find that note!" end
 end
 
 put '/:id' do   
@@ -58,7 +69,7 @@ put '/:id' do
   n.complete = params[:complete] ? 1 : 0
   n.updated_at = Time.now
   n.save
-  redirect '/'
+  redirect '/'  # takes the browser back to this link; '/' being homepage
 end
 
 delete '/:id' do
