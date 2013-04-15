@@ -33,9 +33,6 @@ end
 get '/' do
   @notes = Note.all :order => :id.desc   # DataMapper gets all Notes from db
   @title = 'All notes'
-  if @notes.empty? 
-    flash.now[:error] = "No notes found. Add your first below."
-  end
   erb :home   # Runs layout.erb through the ERB parser and yields to home.erb
 end
 
@@ -44,11 +41,8 @@ post '/' do
   n.content = params[:content]   #params[:content] is set to textarea value (textarea name=content)
   n.created_at = Time.now
   n.updated_at = Time.now
-  if n.save 
-    redirect '/', notice: "Note created successfully."
-  else 
-    redirect '/', :error => "Failed to save note." 
-  end
+  n.save
+  redirect ''
 end
 
 get '/rss.xml' do   # RSS feed
@@ -59,8 +53,7 @@ end
 get '/:id' do   # URL parameter; sinatra puts this in params[]
   @note = Note.get params[:id].to_i   # .get method is DataMapper at work
   @title = "Edit note ##{params[:id]}"
-  if @note then erb :edit
-  else redirect '/', flash.now[:error] = "Can't find that note!" end
+  erb :edit
 end
 
 put '/:id' do   

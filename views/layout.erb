@@ -18,20 +18,12 @@
 	</nav>
 
 	<div id="container">
-		
 		<header>
 			<hgroup>
 				<h1><a href="/"><%= SITE_TITLE %></a></h1>
 				<h2><%= SITE_DESCRIPTION %></h2>
 			</hgroup>
 		</header>
-		
-		<% if flash.now[:notice] %>
-			<p class="notice"><%= flash.now[:notice] %></p>
-		<% end %>
-		<% if flash.now[:error] %>
-			<p class="error"><%= flash.now[:error] %></p>
-		<% end %>		
 
 		<div id="main">
 			<%= yield %>
@@ -40,7 +32,6 @@
 		<footer>
 			<p><small>An app by jimbonk!</small></p>
 		</footer>
-
 	</div>
 
 </body>
