@@ -3,7 +3,6 @@ source "https://www.rubygems.org"
 gem 'sinatra'
 gem 'data_mapper'
 gem 'builder'
-gem 'sinatra-flash'
 
 group :production do
 	gem 'pg'

@@ -42,11 +42,6 @@ post '/' do
   redirect '/'
 end
 
-get '/rss.xml' do   
-  @notes = Note.all :order => :id.desc
-  builder :rss  
-end
-
 get '/:id' do   
   @note = Note.get params[:id].to_i  
   @title = "Edit note ##{params[:id]}"

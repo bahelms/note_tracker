@@ -1,8 +1,5 @@
 <% if @note %>
 	<form action="/<%= @note.id %>" method="post" id="edit">
-		<!--PUT/DELETE requests aren't supported by browsers.
-		The hidden input "fakes" a PUT request. PUT is for modifying data.
-		There still must be a PUT route implemented.-->
 		<input type="hidden" name="_method" value="put">
 		<textarea name="content"><%= h @note.content %></textarea>
 		<input type="checkbox" name="complete" <%= "checked" if @note.complete %>>
