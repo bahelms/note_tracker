@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title><%= "#{@title} | #{SITE_TITLE}" %></title>
-	<link href="/reset.css" type="text/css" rel="stylesheet">
-	<link href="/style.css" type="text/css" rel="stylesheet">
-	<link href="/rss.html" type="application/rss+xml" rel="alternate">
+  <meta charset="UTF-8">
+  <title><%= "#{@title} | #{SITE_TITLE}" %></title>
+  <link href="/reset.css" type="text/css" rel="stylesheet">
+  <link href="/style.css" type="text/css" rel="stylesheet">
+  <link href="/rss.html" type="application/rss+xml" rel="alternate">
 </head>
 <body>
 
-	<nav>
-		<ul id="menu">
-			<li><a href="#">Home</a></li>
-			<li>Something</li>
-			<li>Something else</li>
-		</ul>
-	</nav>
+  <nav>
+    <ul id="menu">
+      <li><a href="#">Home</a></li>
+      <li>Something</li>
+      <li>Something else</li>
+    </ul>
+  </nav>
 
-	<div id="container">
-		<header>
-			<hgroup>
-				<h1><a href="/"><%= SITE_TITLE %></a></h1>
-				<h2><%= SITE_DESCRIPTION %></h2>
-			</hgroup>
-		</header>
+  <div id="container">
+    <header>
+      <hgroup>
+        <h1><a href="/"><%= SITE_TITLE %></a></h1>
+        <h2><%= SITE_DESCRIPTION %></h2>
+      </hgroup>
+    </header>
 
-		<div id="main">
-			<%= yield %>
-		</div>
-		
-		<footer>
-			<p><small>An app by jimbonk!</small></p>
-		</footer>
-	</div>
+    <div id="main">
+      <%= yield %>
+    </div>
+    
+    <footer>
+      <p><small>An app by jimbonk!</small></p>
+    </footer>
+  </div>
 
 </body>
 </html>
